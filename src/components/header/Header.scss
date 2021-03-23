@@ -1,8 +1,8 @@
-@import './variables.scss';
+@import '../variables.scss';
 
 .App-header {
-  background-color: $background_color;
-  min-height: 100vh;
+  background-color: $header_background_color;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;

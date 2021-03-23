@@ -2,19 +2,10 @@
 import './App.scss';
 import React from 'react';
 import Header from './components/header/Header.js'
-import Main from './components/main/Main.js'
+import Form from './components/Form/Form.js'
+import Footer from './components/footer/Footer.js'
 
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className = "App-header">
-//         Here is a header
-//       </header>
-//     </div>
-//   );
-// }
 
 class App extends React.Component{
   constructor(){
@@ -33,10 +24,11 @@ class App extends React.Component{
       <div className="App">
         < Header/>
         <div>
-          Here is a header
-          <button onClick = {() => {this.log(this.state.number)}}>Howdy {this.state.number} </button>
         </div>
-      <Main />
+        <div>
+          <Form />
+        </div>
+      <Footer />
       </div>
     );
   }

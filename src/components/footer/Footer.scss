@@ -1,0 +1,12 @@
+@import '../variables.scss';
+
+.App-footer {
+  background-color: $footer_background_color;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: $footer-text-color;
+}
