@@ -3,6 +3,7 @@ import './App.scss';
 import React from 'react';
 import Header from './components/header/Header.js'
 import Form from './components/Form/Form.js'
+import Results from './components/results/Results.js'
 import Footer from './components/footer/Footer.js'
 
 
@@ -11,24 +12,28 @@ class App extends React.Component{
   constructor(){
     super();
     this.state = {
-      number: 1
+      count: 0,
+      results: [],
+      headers: {},
+
     }
   }
-  log(number){
-    console.log('hey from component');
-    this.setState({number: number + 1})
+
+  updateResults = (data, headers) => {
+    this.setState({
+      results: data.results,
+      count: data.count,
+      headers: headers,
+        })
   }
 
   render(){
     return (
       <div className="App">
         < Header/>
-        <div>
-        </div>
-        <div>
-          <Form />
-        </div>
-      <Footer />
+        <Form updateResults={this.updateResults}/>
+        <Results data={this.state}/>
+        <Footer />
       </div>
     );
   }
