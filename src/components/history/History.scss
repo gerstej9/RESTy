@@ -1,0 +1,17 @@
+@import '../variables.scss';
+
+.App-History {
+  background-color: white;
+  width: 30%;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(8px + 1vmin);
+  color: $footer-text-color;
+  span{
+    margin-bottom: 10px;
+  }
+}
+
