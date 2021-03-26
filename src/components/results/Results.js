@@ -1,21 +1,26 @@
 import React from 'react';
 import JSONPretty from 'react-json-pretty';
 import './Main.scss';
+import { If, isObjectEmpty} from '../If/If.js'
 
 
 
 
 class Results extends React.Component{
 
-  render(){
-    if(this.props.data.isLoading){
-      return <div className="loader" data-testid = "loader"></div>
-    }
-    if(!this.props.data.results[0]){
-      return <div className ="App-Main" data-testid = "results"></div>
-    }
-    else{
-      return(
+render(){
+  return(
+    <div>
+      <If condition={this.props.data.isLoading}>
+        <div className="loader" data-testid = "loader">
+        </div>
+      </If>
+      <If condition={this.props.data.error}>
+        <div className ="App-Main" data-testid = "results">
+              <p>Error: No results found</p>
+        </div>
+      </If>
+      <If condition={isObjectEmpty(this.props.data.results)}>
         <div className ="App-Main" data-testid = "results">
           <p>Count</p>
           <JSONPretty id="json-pretty" data={this.props.data.count}></JSONPretty>  
@@ -23,10 +28,10 @@ class Results extends React.Component{
           <JSONPretty id="json-pretty" data={this.props.data.headers}></JSONPretty>  
           <p>Results</p>
           <JSONPretty id="json-pretty" data={this.props.data.results}></JSONPretty> 
-          <div className="loader"></div>
         </div>
-      )
-    }
+      </If>
+    </div>
+    )
   }
 }
 

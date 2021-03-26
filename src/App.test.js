@@ -11,16 +11,18 @@ test('renders form and displays results', async () => {
   let textField = screen.getByTestId('form-input')
   userEvent.type(textField, 'https://pokeapi.co/api/v2/pokemon');
   let button = screen.getByText('Submit');
+  let GET = screen.getByText('GET');
 
   expect(button).toBeInTheDocument();
 
   fireEvent.click(button);
+  fireEvent.click(GET);
 
   let results = await screen.findByTestId('results');
 
   expect(results).toBeInTheDocument();
 
-  let bulbasaur = await screen.findByText(/bulbasaur/);
+  let bulbasaur = await screen.findByText(/bulbasaur/i);
 
   expect(bulbasaur).toBeInTheDocument();
 
@@ -33,6 +35,7 @@ const server = setupServer(
         { name: 'Bulbasaur' },
         { name: "Beedrill" }
       ],
+      count: 0,
     }));
   })
 );
@@ -45,7 +48,13 @@ describe('testing the App', () => {
   it('should fetch and display pokemon data', async () => {
     render(<App />);
 
-    await waitFor(() => expect(screen.getByText('test')).toBeInTheDocument());
-    await waitFor(() => expect(screen.getByText('Also test')).toBeInTheDocument());
+    let button = screen.getByText('Submit');
+  
+    expect(button).toBeInTheDocument();
+  
+    fireEvent.click(button);
+
+    await waitFor(() => expect(screen.getByText('Bulbasaur' , {exact: false})).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Beedrill', {exact: false})).toBeInTheDocument());
   })
 })

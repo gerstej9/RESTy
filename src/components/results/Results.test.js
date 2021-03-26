@@ -21,12 +21,12 @@ describe('Testing the results section loader', () => {
 });
 
 describe('Testing the results section display of results after loader', () => {
-  it('Should display atwo pokemon', async () => {
+  it('Should display two pokemon', async () => {
 
-    render(<Results data={{isLoading: true, results: [{name:'Bulbasaur'}, {name: 'Beedrill'}]}} />);
+    let { rerender} = render(<Results data={{isLoading: true, results: [{name:'Bulbasaur'}, {name: 'Beedrill'}]}} />);
     expect(screen.getByTestId('loader')).toBeTruthy();
-    render(<Results data={{isLoading: false, results: [{name:'Bulbasaur'}, {name: 'Beedrill'}]}} />);
-    await waitFor(() => expect(screen.getByText('Bulbasaur', { exact: false })).toBeInTheDocument());
-    await waitFor(() => expect(screen.getByText('Beedrill', { exact: false })).toBeInTheDocument());
+    rerender(<Results data={{isLoading: false, results: [{name:'Bulbasaur'}, {name: 'Beedrill'}]}} />);
+    await waitFor(() => expect(screen.queryByText('Bulbasaur', { exact: false })).toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByText('Beedrill', { exact: false })).toBeInTheDocument());
   });
 });
