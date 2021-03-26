@@ -10,12 +10,18 @@ class Form extends React.Component{
     const req = await fetch(this.props.data.input,{
       method: this.props.data.rest,
     });
-    console.log(req.status);
-    const data = await req.json();
-    console.log(data);
-    const headers = req.headers;
-    this.props.updateResults(data, headers);
-    this.props.setLocalStorage(req.status, data, this.props.data.input, this.props.data.rest )
+    try{
+      const data = await req.json();
+      const headers = req.headers;
+      this.props.updateResults(data, headers);
+      this.props.setLocalStorage(req.status, data, this.props.data.input, this.props.data.rest )
+      this.props.isError(false);
+    }
+    catch(e){
+      console.log(e);
+      this.props.updateResults({results:{}, count: 0}, null);
+      this.props.isError(true);
+    }
     this.props.loadFunction(false);
   }
   

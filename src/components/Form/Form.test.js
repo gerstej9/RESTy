@@ -6,8 +6,12 @@ import Form from './Form.js';
 describe('testing functionality of Form.js', () => {
   it('Needs to run make an api call on button submit', async () => {
     let handleUpdate = jest.fn();
+    let loadFunction = jest.fn();
+    let handleInputChange = jest.fn();
+    let handleRestChange = jest.fn();
+    let setLocalStorage = jest.fn();
 
-    render(<Form updateResults={handleUpdate} />);
+    render(<Form updateResults={handleUpdate} loadFunction={loadFunction} handleRestChange={handleRestChange} handleInputChange={handleInputChange} setLocalStorage={setLocalStorage} data={{input:'https://pokeapi.co/api/v2/pokemon', rest: 'GET'}}/>);
 
     let textField = screen.getByTestId('form-input')
     userEvent.type(textField, 'https://pokeapi.co/api/v2/pokemon');
