@@ -10,8 +10,9 @@ describe('testing functionality of Form.js', () => {
     let handleInputChange = jest.fn();
     let handleRestChange = jest.fn();
     let setLocalStorage = jest.fn();
+    let isError = jest.fn();
 
-    render(<Form updateResults={handleUpdate} loadFunction={loadFunction} handleRestChange={handleRestChange} handleInputChange={handleInputChange} setLocalStorage={setLocalStorage} data={{input:'https://pokeapi.co/api/v2/pokemon', rest: 'GET'}}/>);
+    render(<Form isError={isError} updateResults={handleUpdate} loadFunction={loadFunction} handleRestChange={handleRestChange} handleInputChange={handleInputChange} setLocalStorage={setLocalStorage} data={{input:'https://pokeapi.co/api/v2/pokemon', rest: 'GET'}}/>);
 
     let textField = screen.getByTestId('form-input')
     userEvent.type(textField, 'https://pokeapi.co/api/v2/pokemon');

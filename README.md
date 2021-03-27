@@ -10,8 +10,11 @@
 ## Lab 28
 * A continuation of labs 26 & 27, adding a local storage component, loading spinner, and search autopopulation based on previous queries.
 
-## Code Sandbox
-* https://codesandbox.io/s/flamboyant-tree-ko56g?file=/src/App.js
+## Lab 29
+* A continuation of labs 26, 27 & 28, adding route paths, nav links, and new components of help, if, and details
+
+## Netlify
+https://kind-kirch-014b3e.netlify.app/
 
 ## UML 
 ### Day 1 Lab 26
@@ -22,4 +25,7 @@
 
 ### Day 3 Lab 28
 ![UML](./src/components/UML_Lab28.jpg)
+
+### Day 4 Lab 29
+![UML](./src/components/Lab29UML.jpg)
 
